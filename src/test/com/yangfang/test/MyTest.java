@@ -43,10 +43,16 @@ public class MyTest {
     }
 
     @Test
-    public void queryOne(){
-        String sql="select * from dept where id =1";
+    public void queryOneField(){
+        String sql="select dname from dept where deptno=1";
         Object object = jdbcTemplate.queryForObject(sql, new SingleColumnRowMapper<>());
         System.out.println(object);
+    }
+
+    @Test
+    public void queryObject(){
+        String sql="select * from dept";
+        jdbcTemplate.queryForObject(sql,new ColumnMapRowMapper());
     }
 
 
